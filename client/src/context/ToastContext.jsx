@@ -18,7 +18,7 @@ export function ToastProvider({ children }) {
   return (
     <ToastContext.Provider value={value}>
       {children}
-      <div className="pointer-events-none fixed right-4 top-4 z-50 flex w-[min(92vw,22rem)] flex-col gap-2">
+      <div className="pointer-events-none fixed right-4 top-20 z-50 flex w-[min(92vw,20rem)] flex-col gap-2">
         {toasts.map((toast) => (
           <div
             key={toast.id}
