@@ -12,7 +12,7 @@ import { errorHandler } from './middleware/error.middleware.js';
 
 const app = express();
 
-const AllowedOrigins = ["http://localhost:5173", "http://ecommerce-project-neon-theta.vercel.app"];
+const AllowedOrigins = ["http://localhost:5173", "https://ecommerce-project-neon-theta.vercel.app"];
 
 app.use(cors({
     origin: AllowedOrigins ,
