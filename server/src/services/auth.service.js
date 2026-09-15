@@ -44,7 +44,7 @@ export async function login(userData) {
     },
     process.env.JWT_SECRET,
     {
-      expiresIn: "12h",
+      expiresIn: "30d",
     },
   );
  
