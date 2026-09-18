@@ -3,6 +3,8 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
 
+
+
 export default function AuthPage() {
   const navigate = useNavigate();
   const location = useLocation();

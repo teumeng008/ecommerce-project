@@ -1,7 +1,7 @@
-import { createContext, useContext, useEffect, useMemo, useState } from 'react';
-import { authService } from '../services/authService';
-import { userService } from '../services/userService';
-import { useToast } from './ToastContext';
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { authService } from "../services/authService";
+import { userService } from "../services/userService";
+import { useToast } from "./ToastContext";
 
 const AuthContext = createContext(null);
 
@@ -12,7 +12,7 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     const initializeAuth = async () => {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem("token");
       if (!token) {
         setLoading(false);
         return;
@@ -22,8 +22,8 @@ export function AuthProvider({ children }) {
         const response = await userService.getMe();
         setUser(response.user);
       } catch (error) {
-        localStorage.removeItem('token');
-        addToast('Session expired. Please sign in again.', 'error');
+        localStorage.removeItem("token");
+        addToast("Session expired. Please sign in again.", "error");
       } finally {
         setLoading(false);
       }
@@ -34,22 +34,22 @@ export function AuthProvider({ children }) {
 
   const login = async (credentials) => {
     const response = await authService.login(credentials);
-    localStorage.setItem('token', response.token);
+    localStorage.setItem("token", response.token);
     setUser(response.user);
-    addToast('Signed in successfully.', 'success');
+    addToast("Signed in successfully.", "success");
     return response;
   };
 
   const register = async (payload) => {
     const response = await authService.register(payload);
-    addToast('Account created. Please sign in.', 'success');
+    addToast("Account created. Please sign in.", "success");
     return response;
   };
 
   const logout = () => {
-    localStorage.removeItem('token');
+    localStorage.removeItem("token");
     setUser(null);
-    addToast('Signed out.', 'success');
+    addToast("Signed out.", "success");
   };
 
   const refreshProfile = async () => {
@@ -62,14 +62,16 @@ export function AuthProvider({ children }) {
     () => ({ user, loading, login, register, logout, refreshProfile }),
     [user, loading, addToast],
   );
-
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  //children rendered here -----------------------
+  //                                             V  
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>; // this is where all the object is being gave to AuthContext provider
 }
 
 export function useAuth() {
-  const context = useContext(AuthContext);
+  const context = useContext(AuthContext); // context get all the object inside AuthContext which has been assigned
   if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider');
+    throw new Error("useAuth must be used within an AuthProvider");
   }
   return context;
 }
+// TODO: understand useMemo(), process flow 
