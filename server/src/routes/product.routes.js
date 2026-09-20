@@ -28,18 +28,18 @@ router.get("/product", listProducts);
  * Admin only - Create product
  * POST /product
  */
-router.post("/product", verifyToken, accessDatabase, authorize("ADMIN"), addProduct);
+router.post("/product", verifyToken, accessDatabase, authorize("OWNER", "ADMIN"), addProduct);
 
 /**
  * Admin only - Update product
  * PUT /product/:id
  */
-router.put("/product/:id", verifyToken, accessDatabase, authorize("ADMIN"), editProduct);
+router.put("/product/:id", verifyToken, accessDatabase, authorize("OWNER", "ADMIN"), editProduct);
 
 /**
  * Admin only - Delete product
  * DELETE /product/:id
  */
-router.delete("/product/:id", verifyToken, accessDatabase, authorize("ADMIN"), deleteProductHandler);
+router.delete("/product/:id", verifyToken, accessDatabase, authorize("OWNER", "ADMIN"), deleteProductHandler);
 
 export default router;

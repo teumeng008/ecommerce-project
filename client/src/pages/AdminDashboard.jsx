@@ -53,6 +53,9 @@ export default function AdminDashboard() {
   const currentUserId = currentUser?.id;
   const [activeSection, setActiveSection] = useState('users');
 
+  const ownerCount = useMemo(() => {
+   return users.filter((item) => item.role === 'OWNER').length
+  },[users]);
   const adminCount = useMemo(() => users.filter((item) => item.role === 'ADMIN').length, [users]);
 
   const handleChangeUserRole = async (userId, role) => {
@@ -168,9 +171,13 @@ export default function AdminDashboard() {
               <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Total users</p>
               <p className="mt-3 text-3xl font-semibold">{users.length}</p>
             </div>
+            <div className=' rounded-3xl bg-slate-800/90 p-6'>
+              <p className=' text-xs uppercase tracking-[0.3rem] text-slate-400'>Total Owner</p>
+              <p className='mt-3 text-3xl font-semibold text-orange-300'>{ownerCount}</p>
+            </div>
             <div className="rounded-3xl bg-slate-800/90 p-6">
               <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Admins</p>
-              <p className="mt-3 text-3xl font-semibold">{adminCount}</p>
+              <p className="mt-3 text-3xl font-semibold ">{adminCount}</p>
             </div>
             <div className="rounded-3xl bg-slate-800/90 p-6">
               <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Products</p>

@@ -22,6 +22,12 @@ export async function register(userData) {
     },
   });
 
+  await prisma.cart.create({
+    data: {
+      userId: user.id,
+    },
+  });
+
   return sanitizeUser(user);
 }
 
@@ -47,6 +53,6 @@ export async function login(userData) {
       expiresIn: "30d",
     },
   );
- 
-  return { token, user : sanitizeUser(user)};
+
+  return { token, user: sanitizeUser(user) };
 }

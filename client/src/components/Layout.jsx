@@ -41,7 +41,7 @@ export default function Layout() {
               <>
                 <NavLink to="/orders" className={navLinkClass}>My Orders</NavLink>
                 <NavLink to="/profile" className={navLinkClass}>Profile</NavLink>
-                {user.role === 'ADMIN' ? (
+                {user.role === 'ADMIN' || user.role === "OWNER" ? (
                   <NavLink to="/admin" className={navLinkClass}>Admin</NavLink>
                 ) : null}
               </>
@@ -94,7 +94,7 @@ export default function Layout() {
                 <>
                   <NavLink to="/orders" onClick={() => setMobileMenuOpen(false)} className={navLinkClass}>My Orders</NavLink>
                   <NavLink to="/profile" onClick={() => setMobileMenuOpen(false)} className={navLinkClass}>Profile</NavLink>
-                  {user.role === 'ADMIN' ? (
+                  {user.role === 'ADMIN' || user.role === 'OWNER' ? (
                     <NavLink to="/admin" onClick={() => setMobileMenuOpen(false)} className={navLinkClass}>Admin</NavLink>
                   ) : null}
                   <button onClick={() => { setMobileMenuOpen(false); handleLogout(); }} className="flex items-center gap-2 rounded-full px-4 py-2 text-left text-sm font-medium text-slate-600 hover:bg-slate-100">

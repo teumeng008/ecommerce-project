@@ -1,5 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { cartService } from '../services/cartService';
+import { cartService } from '../services/cartService.js';
 import { useAuth } from './AuthContext';
 import { useToast } from './ToastContext';
 

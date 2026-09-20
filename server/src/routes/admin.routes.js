@@ -7,8 +7,8 @@ import { listProductsAdmin } from '../controllers/admin.controller.js';
 
 const router = express.Router();
 
-router.get('/users', verifyToken, authorize('ADMIN'), getAllUsers);
-router.put('/users/:id/role', verifyToken, authorize('ADMIN'), updateUserRole);
-router.get('/products', verifyToken, authorize('ADMIN'), listProductsAdmin);
+router.get('/users', verifyToken, authorize('OWNER', 'ADMIN'), getAllUsers);
+router.put('/users/:id/role', verifyToken, authorize('OWNER'), updateUserRole);
+router.get('/products', verifyToken, authorize('OWNER', 'ADMIN'), listProductsAdmin);
 
 export default router;

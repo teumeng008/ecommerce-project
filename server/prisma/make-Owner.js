@@ -4,7 +4,7 @@ async function main() {
   const email = process.argv[2];
   if (!email) {
     console.error("Please provide an email.");
-    console.error('Example: npm run seed:admin -- "Example123@gmail.com"');
+    console.error('Example: npm run seed:owner -- "Example123@gmail.com"');
     process.exit(1);
   }
 
@@ -14,11 +14,11 @@ async function main() {
         email: email,
       },
       data: {
-        role: "ADMIN",
+        role: "OWNER",
       },
     });
 
-    console.log(`${user.email} is now an ADMIN.`);
+    console.log(`${user.email} is now an OWNER.`);
   } catch (error) {
     console.error(`User with email "${email}" doesn't exist.`);
     process.exit(1);
