@@ -1,5 +1,5 @@
 -- AlterTable
-ALTER TABLE `product` MODIFY `thumbnail` TEXT NULL;
+ALTER TABLE `Product` MODIFY `thumbnail` TEXT NULL;
 
 -- AlterTable
-ALTER TABLE `user` MODIFY `role` ENUM('USER', 'ADMIN', 'OWNER') NOT NULL DEFAULT 'USER';
+ALTER TABLE `User` MODIFY `role` ENUM('USER', 'ADMIN', 'OWNER') NOT NULL DEFAULT 'USER';
